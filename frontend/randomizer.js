@@ -11,10 +11,8 @@ function onRestaurantSubmit(e) {
   e.preventDefault();
   const data = new FormData(e.target);
   const dataObject = Object.fromEntries(data.entries());
-  // console.log(dataObject);
 
   let restaurantName = dataObject["restaurantName"];
-  // console.log(restaurantName);
   const formData = { name: restaurantName };
   postRestaurant(formData);
 
@@ -24,7 +22,7 @@ function onRestaurantSubmit(e) {
 async function chooseRandomRestaurant(e) {
   e.preventDefault();
 
-  result = await getRestaurant();
+  let result = await getRestaurant();
   // Check if output is not empty
   if (result) {
     let node = document.createTextNode(result.name);
@@ -48,8 +46,16 @@ async function postRestaurant(data) {
     });
 
     const result = await response.json();
-    alert("Thank you for your restaurant input :)")
-    console.log("Success:", result);
+	
+    if (response.status == 201) {
+      alert("Thank you for your restaurant input :)")
+      console.log("Success:", result);
+    }
+    else {
+      alert("Invalid Resaturant name provided, please try again!");
+    }
+	
+    
   } catch (error) {
     console.error("Error:", error);
   }
