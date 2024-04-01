@@ -46,7 +46,7 @@ public class BaseController<D extends BaseDto<I>, E extends BaseEntity<I>, I ext
         final D savedD = service.save(d);
         final HttpHeaders headers = new HttpHeaders();
         headers.setLocation(new URI(String.format("%s/%s", request.getRequestURL(),savedD.getId())));
-        return new ResponseEntity<>(service.save(savedD), headers, HttpStatus.CREATED);
+        return new ResponseEntity<>(savedD, headers, HttpStatus.CREATED);
     }
 
     @PutMapping(path = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
