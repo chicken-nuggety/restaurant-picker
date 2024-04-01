@@ -4,7 +4,11 @@
 * Hibernate: 6.0.0.Alpha7
 * Querydsl: 5.0.0
 
-## Dependency
-backend: http://localhost:8080/backend
+## APIs developed
+* Basic CRUD APIs
+* Retrieval of a random Restaurant.
 
-h2: http://localhost:8080/backend/h2
+## Links
+Backend: http://localhost:8080/backend
+
+H2 Database: http://localhost:8080/backend/h2
