@@ -4,7 +4,7 @@ import com.restaurant.picker.application.repo.IBaseRepo;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.restaurant.picker.application.entity.BaseEntity;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;

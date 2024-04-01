@@ -1,15 +1,14 @@
 package com.restaurant.picker.application.repo.impl;
 
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.restaurant.picker.application.entity.ERestaurant;
 import com.restaurant.picker.application.entity.QERestaurant;
 import com.restaurant.picker.application.repo.IRestaurantRepo;
-import com.querydsl.jpa.impl.JPAQueryFactory;
+import jakarta.persistence.EntityManager;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.support.JpaEntityInformation;
 import org.springframework.stereotype.Repository;
-
-import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
 
 import static org.springframework.data.jpa.repository.support.JpaEntityInformationSupport.getEntityInformation;
 

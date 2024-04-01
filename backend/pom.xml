@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.5</version>
+		<version>3.2.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.restaurant.picker</groupId>
@@ -16,10 +16,13 @@
 	<properties>
 		<java.version>17</java.version>
 		<querydsl.version>5.0.0</querydsl.version>
-		<spring-data-jpa.version>2.7.6</spring-data-jpa.version>
-		<hibernate.version>6.0.0.Alpha7</hibernate.version>
+		<spring.version>3.2.4</spring.version>
+		<hibernate-entitymanager.version>6.0.0.Alpha7</hibernate-entitymanager.version>
+		<hibernate.version>6.4.4.Final</hibernate.version>
+		<h2.version>2.2.224</h2.version>
 	</properties>
 	<dependencies>
+<!--		Spring Boot-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -29,36 +32,51 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.liquibase</groupId>
-			<artifactId>liquibase-core</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+<!--		Spring Boot Migrator-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-properties-migrator</artifactId>
+			<version>3.0.3</version>
+		</dependency>
+
+<!--		Liquibase-->
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+		</dependency>
+<!--		Lombok-->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+<!--		Querydsl-->
+		<dependency>
 			<groupId>com.querydsl</groupId>
 			<artifactId>querydsl-apt</artifactId>
 			<version>${querydsl.version}</version>
+			<classifier>jakarta</classifier>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.querydsl</groupId>
 			<artifactId>querydsl-jpa</artifactId>
 			<version>${querydsl.version}</version>
+			<classifier>jakarta</classifier>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.data</groupId>
-			<artifactId>spring-data-jpa</artifactId>
-			<version>${spring-data-jpa.version}</version>
-		</dependency>
+
+<!--		Hibernate and Database-->
 		<dependency>
 			<groupId>org.hibernate.orm</groupId>
 			<artifactId>hibernate-core</artifactId>
@@ -72,14 +90,15 @@
 		<dependency>
 			<groupId>org.hibernate.orm</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
-			<version>${hibernate.version}</version>
+			<version>${hibernate-entitymanager.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<version>2.1.214</version>
+			<version>${h2.version}</version>
 			<scope>runtime</scope>
 		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -87,6 +106,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${spring.version}</version>
 				<configuration>
 					<excludes>
 						<exclude>
@@ -96,38 +116,43 @@
 					</excludes>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.bsc.maven</groupId>
-				<artifactId>maven-processor-plugin</artifactId>
-				<version>5.0-jdk8-rc3</version>
-				<executions>
-					<execution>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>process</goal>
-						</goals>
-						<configuration>
-							<defaultOutputDirectory>${project.build.directory}/generated-sources</defaultOutputDirectory>
-							<processors>
-								<processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
-								<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>
-							</processors>
-						</configuration>
-					</execution>
-				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>com.querydsl</groupId>
-						<artifactId>querydsl-apt</artifactId>
-						<version>${querydsl.version}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.hibernate.orm</groupId>
-						<artifactId>hibernate-jpamodelgen</artifactId>
-						<version>${hibernate.version}</version>
-					</dependency>
-				</dependencies>
-			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.bsc.maven</groupId>-->
+<!--				<artifactId>maven-processor-plugin</artifactId>-->
+<!--				<version>5.0-jdk8-rc3</version>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<phase>generate-sources</phase>-->
+<!--						<goals>-->
+<!--							<goal>process</goal>-->
+<!--						</goals>-->
+<!--						<configuration>-->
+<!--							<defaultOutputDirectory>${project.build.directory}/generated-sources</defaultOutputDirectory>-->
+<!--							<processors>-->
+<!--								<processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>-->
+<!--								<processor>org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor</processor>-->
+<!--							</processors>-->
+<!--						</configuration>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--				<dependencies>-->
+<!--					<dependency>-->
+<!--						<groupId>com.querydsl</groupId>-->
+<!--						<artifactId>querydsl-apt</artifactId>-->
+<!--						<version>${querydsl.version}</version>-->
+<!--					</dependency>-->
+<!--&lt;!&ndash;					<dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;						<groupId>org.hibernate.orm</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;						<artifactId>hibernate-jpamodelgen</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;						<version>${hibernate.version}</version>&ndash;&gt;-->
+<!--&lt;!&ndash;					</dependency>&ndash;&gt;-->
+<!--					<dependency>-->
+<!--						<groupId>org.hibernate.orm</groupId>-->
+<!--						<artifactId>hibernate-jpamodelgen-jakarta</artifactId>-->
+<!--						<version>6.0.0.Alpha9</version>-->
+<!--					</dependency>-->
+<!--				</dependencies>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 
