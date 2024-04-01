@@ -4,41 +4,22 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
     <changeSet author="Jayvan" id="1234">
-        <createTable tableName="profile">
-            <column autoIncrement="true" name="id" type="bigint">
-                <constraints primaryKey="true"/>
-            </column>
-            <column name="name" type="varchar(20)">
-                <constraints nullable="false"/>
-            </column>
-            <column  name="username" type="varchar(10)">
-                <constraints nullable="false"/>
-            </column>
-            <column  name="password" type="varchar(20)">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
         <createTable tableName="restaurant">
             <column autoIncrement="true" name="id" type="bigint">
                 <constraints primaryKey="true"/>
             </column>
             <column name="name" type="varchar(20)">
-<!--                <constraints nullable="false"/>-->
             </column>
             <column name="active_status" type="boolean">
                 <constraints nullable="false"/>
             </column>
             <column name="created_by" type="varchar(200)">
-<!--                <constraints nullable="false"/>-->
             </column>
             <column name="created_time" type="TIMESTAMP">
-<!--                <constraints nullable="false"/>-->
             </column>
             <column name="modified_by" type="varchar(200)">
-<!--                <constraints nullable="false"/>-->
             </column>
             <column name="modified_time" type="TIMESTAMP">
-<!--                <constraints nullable="false"/>-->
             </column>
         </createTable>
     </changeSet>
