@@ -8,16 +8,16 @@
             <column autoIncrement="true" name="id" type="bigint">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="name" type="varchar(20)">
+            <column name="name" type="nvarchar(200)">
             </column>
             <column name="active_status" type="boolean">
                 <constraints nullable="false"/>
             </column>
-            <column name="created_by" type="varchar(200)">
+            <column name="created_by" type="nvarchar(200)">
             </column>
             <column name="created_time" type="TIMESTAMP">
             </column>
-            <column name="modified_by" type="varchar(200)">
+            <column name="modified_by" type="nvarchar(200)">
             </column>
             <column name="modified_time" type="TIMESTAMP">
             </column>
