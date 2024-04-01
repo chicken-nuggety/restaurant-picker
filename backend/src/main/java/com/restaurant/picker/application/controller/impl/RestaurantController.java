@@ -14,12 +14,12 @@ import java.util.Optional;
 @RequestMapping(path = "/restaurant")
 public class RestaurantController extends BaseController<Restaurant, ERestaurant, Long> {
 
-    private final IRestaurantPickerService service;
+    private final IRestaurantPickerService restaurantPickerService;
 
     @Autowired
-    public RestaurantController(IRestaurantPickerService service) {
-        super(service);
-        this.service = service;
+    public RestaurantController(IRestaurantPickerService restaurantPickerService) {
+        super(restaurantPickerService);
+        this.restaurantPickerService = restaurantPickerService;
     }
 
     // Used as a temporary solution due to lack client server
@@ -27,7 +27,7 @@ public class RestaurantController extends BaseController<Restaurant, ERestaurant
     @ResponseStatus(code = HttpStatus.OK)
     @GetMapping(path = "/random")
     public ResponseEntity<Restaurant> getRandomRestaurant() {
-        Optional<Restaurant> restaurant = service.retrieveRandomRestaurant();
+        Optional<Restaurant> restaurant = restaurantPickerService.retrieveRandomRestaurant();
         return restaurant.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.noContent().build());
     }
 }

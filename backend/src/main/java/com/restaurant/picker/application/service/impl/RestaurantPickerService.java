@@ -17,37 +17,34 @@ import java.util.Random;
 @Slf4j
 public class RestaurantPickerService extends BaseService<Restaurant, ERestaurant, Long> implements IRestaurantPickerService {
 
-    private final IRestaurantRepo repo;
-    private final IRestaurantMapper mapper;
+    private final IRestaurantRepo restaurantRepo;
+    private final IRestaurantMapper restaurantMapper;
+
+    private Random random;
 
     @Autowired
-    public RestaurantPickerService(IRestaurantRepo repo, IRestaurantMapper mapper){
-        super(repo,mapper);
-        this.repo = repo;
-        this.mapper = mapper;
+    public RestaurantPickerService(IRestaurantRepo restaurantRepo, IRestaurantMapper restaurantMapper){
+        super(restaurantRepo,restaurantMapper);
+        this.restaurantRepo = restaurantRepo;
+        this.restaurantMapper = restaurantMapper;
+        this.random = new Random();
     }
 
     @Override
     public Optional<Restaurant> retrieveRandomRestaurant() {
-        List<ERestaurant> eRestaurants = repo.findAll();
+        List<ERestaurant> eRestaurants = restaurantRepo.findAll();
 
         if (eRestaurants.isEmpty()){
             return Optional.empty();
         }
 
-        Random random = new Random();
-
-        int chosenRestaurantIndex = 0;
-
-        if(eRestaurants.size() > 1){
-            chosenRestaurantIndex = random.ints(0, eRestaurants.size())
-                    .findFirst()
-                    .getAsInt();
-        }
+        int chosenRestaurantIndex = random.ints(0, eRestaurants.size())
+                .findFirst()
+                .getAsInt();
 
         ERestaurant chosenRestaurant = eRestaurants.get(chosenRestaurantIndex);
 
-        return Optional.ofNullable(mapper.toDto(chosenRestaurant));
+        return Optional.ofNullable(restaurantMapper.toDto(chosenRestaurant));
     }
 
 }

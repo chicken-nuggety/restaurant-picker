@@ -13,7 +13,7 @@ public class BaseService<D extends BaseDto<I>, E extends BaseEntity<I>, I extend
     protected final IBaseRepo<E, I> repo;
     protected final BaseMapper<E, D> mapper;
 
-    public BaseService(IBaseRepo repo, BaseMapper mapper){
+    public BaseService(IBaseRepo<E, I> repo, BaseMapper<E, D> mapper){
         this.repo = repo;
         this.mapper = mapper;
     }
