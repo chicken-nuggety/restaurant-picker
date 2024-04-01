@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+</head>
+<body>
+    <h1 class="text-3xl font-bold underline text-center my-5">
+        GDE SWE Challenge - Mini Project
+    </h1>
+
+    <div class="flex justify-center">
+        <div class="grow bg-gray-100">
+            <form action="" method="post" id="restaurant-form" class="max-w-sm mx-auto">
+                <div class="my-5">
+                    <label for="restaurantName" class="block mb-2 text-sm font-medium text-gray-900">Submit a Restaurant</label>
+                    <input type="text" name="restaurantName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Restaurant name" required />
+                </div>
+                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Submit</button>
+            </form>
+        </div>
+        <div class="grow grid justify-items-center bg-gray-100">
+            <div class="my-8">
+                <h3 class="text-xl font-bold text-center">
+                    Where to eat?
+                </h3>
+                <p id="restaurant-result" class="text-2xl font-bold text-center text-pink-600">...</p>
+            </div>
+            <form action="" method="get" id="restaurant-random">
+                <button type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Randomise!</button>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="randomizer.js"></script>
+</html>
