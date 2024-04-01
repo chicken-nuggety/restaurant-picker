@@ -1,4 +1,4 @@
-# GDS SWE Challenge
+# Restaurant Picker
 
 Frontend Boilerplate: Tailwind CSS
 
