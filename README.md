@@ -1,1 +1,4 @@
-# restaurant-picker
+# GDS SWE Challenge
+
+Frontend Boilerplate: Tailwind CSS
+Backend Framework: Spring Boot; Java 17

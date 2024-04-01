@@ -1,0 +1,23 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                           http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="Jayvan" id="1234">
+        <insert tableName="restaurant">
+            <column name="id" value="1" />
+            <column name="name" value="Restaurant A" />
+            <column name="active_status" value="true" />
+        </insert>
+        <insert tableName="restaurant">
+            <column name="id" value="2" />
+            <column name="name" value="Restaurant B" />
+            <column name="active_status" value="true" />
+        </insert>
+        <insert tableName="restaurant">
+            <column name="id" value="3" />
+            <column name="name" value="Restaurant C" />
+            <column name="active_status" value="true" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>
