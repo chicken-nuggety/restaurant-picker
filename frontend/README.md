@@ -1,5 +1,6 @@
-# hello-tailwind
-Simple Restaurant Input Randomizer - Frontend Only
+# Frontend
+User interface to store and retrieve a random restaurant option!
 
+## Dependency
 JsConfetti \
 https://github.com/loonywizard/js-confetti
