@@ -17,6 +17,11 @@ public class RestaurantMapper implements IRestaurantMapper {
         if (dto != null) {
             entity.setId(dto.getId());
             entity.setName(dto.getName());
+            entity.setActive(Boolean.TRUE.equals(dto.getIsActive()));
+            entity.setCreatedBy(dto.getCreatedBy());
+            entity.setCreatedTime(dto.getCreatedTime());
+            entity.setModifiedBy(dto.getModifiedBy());
+            entity.setModifiedTime(dto.getModifiedTime());
         }
         return entity;
     }
@@ -28,6 +33,11 @@ public class RestaurantMapper implements IRestaurantMapper {
         if (entity != null) {
             dto.setId(entity.getId());
             dto.setName(entity.getName());
+            dto.setIsActive(entity.isActive());
+            dto.setCreatedBy(entity.getCreatedBy());
+            dto.setCreatedTime(entity.getCreatedTime());
+            dto.setModifiedBy(entity.getModifiedBy());
+            dto.setModifiedTime(entity.getModifiedTime());
         }
         return dto;
     }

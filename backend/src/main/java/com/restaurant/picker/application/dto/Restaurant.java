@@ -13,7 +13,7 @@ public class Restaurant implements BaseDto<Long> {
     private String instanceOf = this.getClass().getSimpleName();
     private Long id;
     private String name;
-    private Boolean activeStatus;
+    private Boolean isActive;
     private String createdBy;
     private LocalDateTime createdTime;
     private String modifiedBy;
